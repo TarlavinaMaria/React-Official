@@ -1,19 +1,24 @@
-import Card from './components/Card/Card';
-
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Header from './components/Header';
+import ProductList from './components/ProductList';
 
 const App = () => {
   return (
-    <div className="app">
-      <Card
-        imageSrc="https://images.unsplash.com/photo-1540206395-68808572332f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-        title="Discover Nature's Beauty"
-        description="Immerse yourself in the tranquil landscapes and breathtaking vistas of the natural world."
-        rating="4.9"
-        reviewCount="128"
-        price="$99"
-      />
-    </div>
+    <Router>
+      <div>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/products" element={<ProductList />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </div>
+    </Router>
   );
 };
+
+const Home = () => <div className="p-4">Home Page</div>;
+const About = () => <div className="p-4">About Page</div>;
 
 export default App;

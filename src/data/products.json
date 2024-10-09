@@ -1,0 +1,56 @@
+[
+    {
+      "id": 1,
+      "imageSrc": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1099&q=80",
+      "title": "Apple iPhone 13 Pro",
+      "description": "The latest iPhone with a stunning Super Retina XDR display and A15 Bionic chip.",
+      "rating": "4.8",
+      "reviewCount": "1500",
+      "price": "$999.00"
+    },
+    {
+      "id": 2,
+      "imageSrc": "https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      "title": "Samsung Galaxy S21 Ultra",
+      "description": "A powerful smartphone with a 108MP camera and 5G capabilities.",
+      "rating": "4.7",
+      "reviewCount": "1200",
+      "price": "$1199.00"
+    },
+    {
+      "id": 3,
+      "imageSrc": "https://images.unsplash.com/photo-1593642532400-2682810df593?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1169&q=80",
+      "title": "Sony WH-1000XM4",
+      "description": "Premium noise-canceling headphones with exceptional sound quality.",
+      "rating": "4.9",
+      "reviewCount": "2000",
+      "price": "$349.00"
+    },
+    {
+      "id": 4,
+      "imageSrc": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      "title": "Nike Air Max 270",
+      "description": "Comfortable and stylish sneakers with a large air cushioning unit.",
+      "rating": "4.6",
+      "reviewCount": "1800",
+      "price": "$160.00"
+    },
+    {
+      "id": 5,
+      "imageSrc": "https://images.unsplash.com/photo-1588854337115-1c67d9247e4d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      "title": "Dell XPS 13",
+      "description": "A sleek and powerful laptop with a nearly borderless display.",
+      "rating": "4.8",
+      "reviewCount": "1600",
+      "price": "$1299.00"
+    },
+    {
+      "id": 6,
+      "imageSrc": "https://images.unsplash.com/photo-1587614382346-4ec70e388b28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      "title": "Canon EOS R5",
+      "description": "A high-performance mirrorless camera with 8K video recording.",
+      "rating": "4.9",
+      "reviewCount": "1400",
+      "price": "$3899.00"
+    }
+  ]
