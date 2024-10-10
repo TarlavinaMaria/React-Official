@@ -1,6 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+/**
+ * Компонент карточки товара. Через props принимает параметры карточки и выводит их в виде JSX элемента.
+ * @param { id, imageSrc, title, description, rating, reviewCount, price } - Параметры карточки. А имено ID, изображение, название, описание, рейтинг, количество отзывов и цена.
+ * @returns JSX элемент.
+ */
+
 const Card = ({ id, imageSrc, title, description, rating, reviewCount, price }) => {
   return (
     <div className="max-w-xs rounded overflow-hidden shadow-lg">

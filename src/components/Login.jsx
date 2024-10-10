@@ -1,5 +1,11 @@
 import React from 'react';
 
+/**
+ * Компонент для входа в систему. 
+ * Содержит форму с полями для ввода логина и пароля.
+ * @returns JSX элемент
+ */
+
 const Login = () => {
   return (
     <div className="p-4">

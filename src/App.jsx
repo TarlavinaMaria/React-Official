@@ -1,12 +1,17 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import ProductList from './components/ProductList';
 import ProductDetail from './components/ProductDetail';
-import Footer from './components/Footer';
 import About from './components/About';
 import Login from './components/Login';
 import Register from './components/Register';
+import Home from './components/Home'; 
+
+/**
+ * Конфигурация приложения с использованием React Router. В данном случае мы создаем компонент App, который будет содержать все другие компоненты приложения.
+ * Внутри App мы используем Router, который позволяет нам управлять маршрутизацией. Мы также используем Routes и Route для определения маршрутов и компонентов, которые должны отображаться в зависимости от текущего маршрута.
+ */
 
 const App = () => {
   return (
@@ -28,7 +33,5 @@ const App = () => {
     </Router>
   );
 };
-
-const Home = () => <div className="p-4">Home Page</div>;
 
 export default App;

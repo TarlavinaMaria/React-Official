@@ -1,10 +1,17 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
-import productsData from '../data/products.json';
+import React from "react";
+import { useParams } from "react-router-dom";
+import productsData from "../data/products.json";
+
+/**
+ * Компонент для отображения информации о товаре по его идентификатору.
+ * Находит товар по идентификатору в массиве данных и отображает его информацию.
+ * Если товар не найден, отображает сообщение "Product not found".
+ * @returns
+ */
 
 const ProductDetail = () => {
   const { id } = useParams();
-  const product = productsData.find(p => p.id === parseInt(id));
+  const product = productsData.find((p) => p.id === parseInt(id));
 
   if (!product) {
     return <div>Product not found</div>;
@@ -13,14 +20,22 @@ const ProductDetail = () => {
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">{product.title}</h1>
-      <img src={product.imageSrc} alt={product.title} className="h-64 object-cover mb-4" />
+      <img
+        src={product.imageSrc}
+        alt={product.title}
+        className="h-64 object-cover mb-4"
+      />
       <p className="text-gray-700 mb-4">{product.description}</p>
       <div className="mb-4">
         <span className="text-yellow-500">Rating: {product.rating}</span>
-        <span className="text-gray-500 ml-2">({product.reviewCount} reviews)</span>
+        <span className="text-gray-500 ml-2">
+          ({product.reviewCount} reviews)
+        </span>
       </div>
       <div>
-        <span className="text-green-600 font-bold text-lg">{product.price}</span>
+        <span className="text-green-600 font-bold text-lg">
+          {product.price}
+        </span>
       </div>
     </div>
   );

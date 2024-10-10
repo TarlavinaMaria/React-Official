@@ -1,5 +1,10 @@
 import React from 'react';
 
+/**
+ * Компонент о сайте. 
+ * @returns JSX элемент
+ */
+
 const About = () => {
   return (
     <div className="p-4">

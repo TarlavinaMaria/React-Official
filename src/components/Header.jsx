@@ -1,6 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+/**
+ * Компонент шапки. Включает ссылки на другие страницы.
+ * @returns JSX
+ */
+
 const Header = () => {
   return (
     <header className="bg-blue-500 p-4 text-white">

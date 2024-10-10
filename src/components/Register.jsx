@@ -1,5 +1,10 @@
 import React from 'react';
 
+/**
+ * Компонент для регистрации. 
+ * @returns JSX
+ */
+
 const Register = () => {
   return (
     <div className="p-4">
