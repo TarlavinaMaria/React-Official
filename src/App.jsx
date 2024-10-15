@@ -7,6 +7,7 @@ import About from './components/About';
 import Login from './components/Login';
 import Register from './components/Register';
 import Home from './components/Home'; 
+import Cart from './components/Cart';
 
 /**
  * Конфигурация приложения с использованием React Router. В данном случае мы создаем компонент App, который будет содержать все другие компоненты приложения.
@@ -26,6 +27,7 @@ const App = () => {
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/cart" element={<Cart />} />
           </Routes>
         </main>
         <Footer />

@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
-/**
- * Компонент карточки товара. Через props принимает параметры карточки и выводит их в виде JSX элемента.
- * @param { id, imageSrc, title, description, rating, reviewCount, price } - Параметры карточки. А имено ID, изображение, название, описание, рейтинг, количество отзывов и цена.
- * @returns JSX элемент.
- */
+import useCartStore from '../store/useCartStore'; // Импортируем Zustand стор
+import Alert from './Alert'; // Импортируем компонент Alert
 
 const Card = ({ id, imageSrc, title, description, rating, reviewCount, price }) => {
+  const addToCart = useCartStore((state) => state.addToCart); // Получаем функцию добавления товара в корзину
+  const [alertMessage, setAlertMessage] = useState(''); // Состояние для уведомления
+
+  const handleAddToCart = () => {
+    addToCart({ id, imageSrc, title, description, rating, reviewCount, price });
+    setAlertMessage(`${title} added to cart!`); // Уведомление пользователя
+  };
+
+  const handleCloseAlert = () => {
+    setAlertMessage(''); // Скрываем уведомление
+  };
+
   return (
     <div className="max-w-xs rounded overflow-hidden shadow-lg">
       <img className="w-full h-48 object-cover" src={imageSrc} alt={title} />
@@ -23,7 +31,16 @@ const Card = ({ id, imageSrc, title, description, rating, reviewCount, price }) 
         <div className="mt-2">
           <span className="text-green-600 font-bold text-lg">{price}</span>
         </div>
+        <button 
+          onClick={handleAddToCart} 
+          className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700"
+        >
+          Add to cart
+        </button>
       </div>
+      {alertMessage && (
+        <Alert message={alertMessage} onClose={handleCloseAlert} />
+      )}
     </div>
   );
 };

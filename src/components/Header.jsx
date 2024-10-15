@@ -26,6 +26,9 @@ const Header = () => {
         <nav>
           <ul className="flex space-x-4">
             <li>
+              <Link to="/cart" className="hover:underline">Cart</Link>
+            </li>
+            <li>
               <Link to="/login" className="hover:underline">Login</Link>
             </li>
             <li>
