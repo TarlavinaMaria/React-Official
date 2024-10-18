@@ -22,6 +22,7 @@ const useCartStore = create((set) => ({
     });
   },
   removeFromCart: (productId) => {
+    // Функция для удаления товара из корзины
     set((state) => ({
       cart: state.cart.filter(item => item.id !== productId),
     }));

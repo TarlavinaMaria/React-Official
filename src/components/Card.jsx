@@ -8,6 +8,7 @@ const Card = ({ id, imageSrc, title, description, rating, reviewCount, price }) 
   const [alertMessage, setAlertMessage] = useState(''); // Состояние для уведомления
 
   const handleAddToCart = () => {
+    // функция добавления товара в корзину
     addToCart({ id, imageSrc, title, description, rating, reviewCount, price });
     setAlertMessage(`${title} added to cart!`); // Уведомление пользователя
   };
