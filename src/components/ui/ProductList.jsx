@@ -1,6 +1,6 @@
 import React from 'react';
-import Card from './Card';
-import productsData from '../data/products.json';
+import Card from '../pages/Card';
+import productsData from '/products.json';
 
 /**
  * Компонент ProductList отображает список товаров.

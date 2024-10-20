@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import productsData from "../data/products.json";
+import productsData from "/products.json"
 
 /**
  * Компонент для отображения информации о товаре по его идентификатору.
