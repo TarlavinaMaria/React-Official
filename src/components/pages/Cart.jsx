@@ -6,6 +6,8 @@ import Alert from "../ui/Alert"; // Импортируем компонент Al
 const Cart = () => {
   const cart = useCartStore((state) => state.cart); // Получаем товары из корзины
   const removeFromCart = useCartStore((state) => state.removeFromCart); // Получаем функцию удаления товара из корзины
+  const increaseQuantity = useCartStore((state) => state.increaseQuantity); // Получаем функцию увеличения количества товара
+  const decreaseQuantity = useCartStore((state) => state.decreaseQuantity); // Получаем функцию уменьшения количества товара
   const [alertMessage, setAlertMessage] = useState(""); // Состояние для уведомления
 
   const handleRemoveFromCart = (productId, title) => {
@@ -46,7 +48,23 @@ const Cart = () => {
               <span className="text-green-600 font-bold text-lg">
                 {item.price}$
               </span>
-              <p className="text-gray-500 mt-1">Count: {item.quantity}</p>
+              <div className="flex items-center mt-2">
+                <button
+                  onClick={() => decreaseQuantity(item.id)}
+                  className="bg-gray-200 text-gray-700 px-2 py-1 rounded-l hover:bg-gray-300"
+                >
+                  -
+                </button>
+                <span className="bg-gray-100 text-gray-700 px-4 py-1">
+                  {item.quantity}
+                </span>
+                <button
+                  onClick={() => increaseQuantity(item.id)}
+                  className="bg-gray-200 text-gray-700 px-2 py-1 rounded-r hover:bg-gray-300"
+                >
+                  +
+                </button>
+              </div>
             </div>
           ))}
         </div>

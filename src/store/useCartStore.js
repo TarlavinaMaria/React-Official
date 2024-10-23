@@ -27,6 +27,22 @@ const useCartStore = create((set) => ({
       cart: state.cart.filter(item => item.id !== productId),
     }));
   },
+  increaseQuantity: (productId) => {
+    // Функция для увеличения количества товара в корзине
+    set((state) => ({
+      cart: state.cart.map(item =>
+        item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
+      ),
+    }));
+  },
+  decreaseQuantity: (productId) => {
+    // Функция для уменьшения количества товара в корзине
+    set((state) => ({
+      cart: state.cart.map(item =>
+        item.id === productId ? { ...item, quantity: item.quantity - 1 } : item
+      ).filter(item => item.quantity > 0),
+    }));
+  },
 }));
 
 export default useCartStore;
