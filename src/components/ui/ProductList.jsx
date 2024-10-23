@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Card from '../pages/Card';
-import productsData from '/products.json';
-
-/**
- * Компонент ProductList отображает список товаров.
- * @returns JSX.Element
- */
 
 const ProductList = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:3001/products')
+      .then(response => response.json())
+      .then(data => setProducts(data))
+      .catch(error => console.error('Error fetching products:', error));
+  }, []);
+
   return (
     <div className="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-      {productsData.map(product => (
+      {products.map(product => (
         <Card
           key={product.id}
           id={product.id}

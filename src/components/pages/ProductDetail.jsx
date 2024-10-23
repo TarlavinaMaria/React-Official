@@ -1,20 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import productsData from "/products.json"
-
-/**
- * Компонент для отображения информации о товаре по его идентификатору.
- * Находит товар по идентификатору в массиве данных и отображает его информацию.
- * Если товар не найден, отображает сообщение "Product not found".
- * @returns
- */
 
 const ProductDetail = () => {
   const { id } = useParams();
-  const product = productsData.find((p) => p.id === parseInt(id));
+  const [product, setProduct] = useState(null);
+
+  useEffect(() => {
+    fetch(`http://localhost:3001/products/${id}`)
+      .then(response => response.json())
+      .then(data => setProduct(data))
+      .catch(error => console.error('Error fetching product:', error));
+  }, [id]);
 
   if (!product) {
-    return <div>Product not found</div>;
+    return <div>Loading...</div>;
   }
 
   return (
