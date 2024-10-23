@@ -43,7 +43,9 @@ const Card = ({
           </span>
         </div>
         <div className="mt-2">
-          <span className="text-green-600 font-bold text-lg">{price}</span>
+          <span className="text-green-600 font-bold text-lg">
+            {price}$
+          </span>
         </div>
         <button
           onClick={handleAddToCart}

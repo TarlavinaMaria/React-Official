@@ -7,7 +7,7 @@
       "description": "The latest iPhone with a stunning Super Retina XDR display and A15 Bionic chip.",
       "rating": "4.8",
       "reviewCount": "1500",
-      "price": "$999.00"
+      "price": "999.00"
     },
     {
       "id": 2,
@@ -16,7 +16,7 @@
       "description": "A powerful smartphone with a 108MP camera and 5G capabilities.",
       "rating": "4.7",
       "reviewCount": "1200",
-      "price": "$1199.00"
+      "price": "1199.00"
     },
     {
       "id": 3,
@@ -25,7 +25,7 @@
       "description": "Premium noise-canceling headphones with exceptional sound quality.",
       "rating": "4.9",
       "reviewCount": "2000",
-      "price": "$349.00"
+      "price": "349.00"
     },
     {
       "id": 4,
@@ -34,7 +34,7 @@
       "description": "Comfortable and stylish sneakers with a large air cushioning unit.",
       "rating": "4.6",
       "reviewCount": "1800",
-      "price": "$160.00"
+      "price": "160.00"
     },
     {
       "id": 5,
@@ -43,7 +43,7 @@
       "description": "A sleek and powerful laptop with a nearly borderless display.",
       "rating": "4.8",
       "reviewCount": "1600",
-      "price": "$1299.00"
+      "price": "1299.00"
     },
     {
       "id": 6,
@@ -52,7 +52,7 @@
       "description": "A high-performance mirrorless camera with 8K video recording.",
       "rating": "4.9",
       "reviewCount": "1400",
-      "price": "$3899.00"
+      "price": "3899.00"
     }
   ]
 }

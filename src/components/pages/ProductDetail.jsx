@@ -1,16 +1,41 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import useCartStore from "../../store/useCartStore"; // Импортируем Zustand стор
+import Alert from "../ui/Alert"; // Импортируем компонент Alert
 
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const [error, setError] = useState(null);
+  const [alertMessage, setAlertMessage] = useState(""); // Состояние для уведомления
+  const addToCart = useCartStore((state) => state.addToCart); // Получаем функцию добавления товара в корзину
 
   useEffect(() => {
     fetch(`http://localhost:3001/products/${id}`)
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
       .then(data => setProduct(data))
-      .catch(error => console.error('Error fetching product:', error));
+      .catch(error => setError(error.message));
   }, [id]);
+
+  const handleAddToCart = () => {
+    if (product) {
+      addToCart(product);
+      setAlertMessage(`${product.title} added to cart!`); // Уведомление пользователя
+    }
+  };
+
+  const handleCloseAlert = () => {
+    setAlertMessage(""); // Скрываем уведомление
+  };
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   if (!product) {
     return <div>Loading...</div>;
@@ -33,9 +58,18 @@ const ProductDetail = () => {
       </div>
       <div>
         <span className="text-green-600 font-bold text-lg">
-          {product.price}
+          {product.price}$
         </span>
       </div>
+      <button
+        onClick={handleAddToCart}
+        className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700"
+      >
+        Add to cart
+      </button>
+      {alertMessage && (
+        <Alert message={alertMessage} onClose={handleCloseAlert} />
+      )}
     </div>
   );
 };

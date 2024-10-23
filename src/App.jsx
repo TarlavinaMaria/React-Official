@@ -1,13 +1,13 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/ui/Header';
-import Footer from './components/ui/Footer';
-import ProductList from './components/ui/ProductList';
-import ProductDetail from './components/pages/ProductDetail';
-import About from './components/pages/About';
-import Login from './components/pages/Login';
-import Register from './components/pages/Register';
-import Home from './components/pages/Home'; 
-import Cart from './components/pages/Cart';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/ui/Header";
+import Footer from "./components/ui/Footer";
+import ProductList from "./components/ui/ProductList";
+import ProductDetail from "./components/pages/ProductDetail";
+import About from "./components/pages/About";
+import Login from "./components/pages/Login";
+import Register from "./components/pages/Register";
+import Home from "./components/pages/Home";
+import Cart from "./components/pages/Cart";
 
 /**
  * Конфигурация приложения с использованием React Router. В данном случае мы создаем компонент App, который будет содержать все другие компоненты приложения.
