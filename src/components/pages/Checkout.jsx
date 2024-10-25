@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 
+/**
+ * Компонент Checkout для формы оплаты
+ * @returns JSX.Element
+ */
+
+
 const Checkout = ({ onClose }) => {
+  // Здесь используем хук useState для создания состояния formData, которое представляет собой объект с полями формы. Изначально все поля пустые.
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -13,7 +20,7 @@ const Checkout = ({ onClose }) => {
     cardExpiry: "",
     cardCvv: "",
   });
-
+  // Функция handleChange обновляет состояние formData при изменении значения поля формы. Функция handleChange принимает событие onChange, извлекает имя поля (name) и значение (value) из элемента, и обновляет соответствующее поле в состоянии formData.
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -25,7 +32,7 @@ const Checkout = ({ onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Data:", formData);
-    // Здесь можно добавить логику для отправки данных на сервер
+    // Здесь добавить логику для отправки данных на сервер!!!
     onClose(); // Закрываем форму оплаты после отправки
   };
 

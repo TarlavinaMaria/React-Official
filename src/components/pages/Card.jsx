@@ -3,6 +3,12 @@ import { Link } from "react-router-dom";
 import useCartStore from "../../store/useCartStore"; // Импортируем Zustand стор
 import Alert from "../ui/Alert"; // Импортируем компонент Alert
 
+
+/**
+ * Компонент Card для отображения информации о товаре и добавления его в корзину
+ * @returns JSX.Element
+ */
+
 const Card = ({
   id,
   imageSrc,

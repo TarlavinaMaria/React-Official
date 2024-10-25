@@ -4,6 +4,13 @@ import { LiaTimesSolid } from "react-icons/lia";
 import Alert from "../ui/Alert"; // Импортируем компонент Alert
 import Checkout from "./Checkout"; // Импортируем компонент Checkout
 
+
+/**
+ * Компонент Cart отображает товары, которые находятся в корзине, и позволяет управлять ими.
+ * @returns JSX.Element
+ */
+
+
 const Cart = () => {
   const cart = useCartStore((state) => state.cart); // Получаем товары из корзины
   const removeFromCart = useCartStore((state) => state.removeFromCart); // Получаем функцию удаления товара из корзины
@@ -12,15 +19,16 @@ const Cart = () => {
   const [alertMessage, setAlertMessage] = useState(""); // Состояние для уведомления
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false); // Состояние для открытия формы оплаты
 
+  // Функция вызывается при нажатии на кнопку удаления товара. Она удаляет товар из корзины
   const handleRemoveFromCart = (productId, title) => {
     removeFromCart(productId); // Удаляем товар из корзины
     setAlertMessage(`${title} deleted!`); // Уведомление пользователя
   };
-
+  // Функция вызывается при закрытии уведомления. Она сбрасывает состояние alertMessage в пустую строку, что скрывает уведомление
   const handleCloseAlert = () => {
-    setAlertMessage(""); // Скрываем уведомление
+    setAlertMessage("");
   };
-
+  // Используем метод reduce для массива cart, чтобы рассчитать общую стоимость всех товаров в корзине. Мы преобразуем цену и количество товара в числа и суммируем их
   const totalPrice = cart.reduce((total, item) => {
     const itemPrice = parseFloat(item.price);
     const itemQuantity = parseInt(item.quantity, 10);
