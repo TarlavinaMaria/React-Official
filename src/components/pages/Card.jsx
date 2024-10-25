@@ -9,14 +9,7 @@ import Alert from "../ui/Alert"; // Импортируем компонент Al
  * @returns JSX.Element
  */
 
-const Card = ({
-  id,
-  imageSrc,
-  title,
-  description,
-  rating,
-  reviewCount,
-  price,
+const Card = ({id, imageSrc, title, description, rating, reviewCount, price,
 }) => {
   const addToCart = useCartStore((state) => state.addToCart); // Получаем функцию добавления товара в корзину
   const [alertMessage, setAlertMessage] = useState(""); // Состояние для уведомления

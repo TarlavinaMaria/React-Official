@@ -10,7 +10,7 @@ import Alert from "../ui/Alert"; // Импортируем компонент Al
 
 const ProductDetail = () => {
   const { id } = useParams(); // Получаем ID продукта из URL
-  const [product, setProduct] = useState(null);
+  const [product, setProduct] = useState(null); // Состояние для продукта
   const [error, setError] = useState(null); // Строка, которая будет содержать сообщение об ошибке, если запрос к серверу не удался
   const [alertMessage, setAlertMessage] = useState(""); // Состояние для уведомления
   const addToCart = useCartStore((state) => state.addToCart); // Получаем функцию добавления товара в корзину

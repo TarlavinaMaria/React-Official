@@ -28,7 +28,7 @@ const Checkout = ({ onClose }) => {
       [name]: value,
     });
   };
-
+  // Функция handleSubmit обрабатывает событие onSubmit формы. Она предотвращает перезагрузку страницы, извлекает данные формы и выводит их в консоль. Затем она закрывает форму оплаты, вызывая функцию onClose.
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Form Data:", formData);
