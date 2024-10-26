@@ -19,7 +19,8 @@ const Login = ({ onLogin }) => {
       })
       .then((data) => {
         if (data.length > 0) {
-          onLogin(data[0].username);
+          const user = data[0];
+          onLogin(user.username, user.role === "admin");
           navigate("/");
         } else {
           setError("Invalid email or password");

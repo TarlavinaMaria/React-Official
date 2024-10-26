@@ -60,13 +60,15 @@
       "id": 1,
       "name": "admin",
       "email": "admin@mail.ru",
-      "password": "admin592780s"
+      "password": "admin592780s",
+      "role": "admin"
     },
     {
       "id": 2,
       "username": "mark",
       "email": "mark@mail.ru",
-      "password": "mark592780"
+      "password": "mark592780",
+      "role": "user"
     }
   ]
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const Header = ({ isLoggedIn, username, onLogout }) => {
+const Header = ({ isLoggedIn, username, isAdmin, onLogout }) => {
   return (
     <header className="bg-blue-500 p-4 text-white">
       <div className="container mx-auto flex justify-between items-center">
@@ -37,6 +37,11 @@ const Header = ({ isLoggedIn, username, onLogout }) => {
                   <Link to="/register" className="hover:underline">Register</Link>
                 </li>
               </>
+            )}
+            {isAdmin && (
+              <li>
+                <Link to="/admin" className="hover:underline">Admin</Link>
+              </li>
             )}
           </ul>
         </nav>
