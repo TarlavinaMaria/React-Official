@@ -54,5 +54,19 @@
       "reviewCount": "1400",
       "price": "3899.00"
     }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "admin",
+      "email": "admin@mail.ru",
+      "password": "admin592780s"
+    },
+    {
+      "id": 2,
+      "username": "mark",
+      "email": "mark@mail.ru",
+      "password": "mark592780"
+    }
   ]
 }

@@ -1,12 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-/**
- * Компонент шапки. Включает ссылки на другие страницы.
- * @returns JSX
- */
-
-const Header = () => {
+const Header = ({ isLoggedIn, username, onLogout }) => {
   return (
     <header className="bg-blue-500 p-4 text-white">
       <div className="container mx-auto flex justify-between items-center">
@@ -28,12 +23,21 @@ const Header = () => {
             <li>
               <Link to="/cart" className="hover:underline">Cart</Link>
             </li>
-            <li>
-              <Link to="/login" className="hover:underline">Login</Link>
-            </li>
-            <li>
-              <Link to="/register" className="hover:underline">Register</Link>
-            </li>
+            {isLoggedIn ? (
+              <li>
+                <span className="hover:underline">{username}</span>
+                <button onClick={onLogout} className="ml-2 hover:underline">Logout</button>
+              </li>
+            ) : (
+              <>
+                <li>
+                  <Link to="/login" className="hover:underline">Login</Link>
+                </li>
+                <li>
+                  <Link to="/register" className="hover:underline">Register</Link>
+                </li>
+              </>
+            )}
           </ul>
         </nav>
       </div>
