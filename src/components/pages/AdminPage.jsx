@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import ProductModal from "../ui/ProductModal";
 
 const AdminPage = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     // Запрос к серверу для получения данных о товарах
-    fetch("http://localhost:3001/products")
+    fetch("http://localhost:3001/orders")
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -23,6 +25,30 @@ const AdminPage = () => {
         setLoading(false);
       });
   }, []);
+
+  const handleAddProduct = (newProduct) => {
+    // Отправка POST-запроса на сервер для добавления нового товара
+    fetch("http://localhost:3001/orders", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newProduct),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // Обновление списка товаров после успешного добавления
+        setProducts([...products, data]);
+      })
+      .catch((error) => {
+        console.error("Error adding product:", error);
+      });
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -83,7 +109,20 @@ const AdminPage = () => {
             ))}
           </tbody>
         </table>
+        <div className="mt-4 flex justify-center">
+          <button
+            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+            onClick={() => setIsModalOpen(true)}
+          >
+            Add Product
+          </button>
+        </div>
       </div>
+      <ProductModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onAddProduct={handleAddProduct}
+      />
     </div>
   );
 };

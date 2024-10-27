@@ -71,5 +71,39 @@
       "role": "user"
     }
   ],
-  "orders": []
+  "orders": [
+    {
+      "id": 7,
+      "imageSrc": "https://images.unsplash.com/photo-1587614382346-4ec70e388b28?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      "title": "Canon EOS R5",
+      "description": "A high-performance mirrorless camera with 8K video recording.",
+      "rating": "4.9",
+      "reviewCount": "1400",
+      "price": "3899.00"
+    },
+    {
+      "id": "830e",
+      "title": "Стартовал ",
+      "description": "2",
+      "price": 2,
+      "rating": 2,
+      "reviewCount": 2
+    },
+    {
+      "id": "b0f2",
+      "title": "Стартовал ",
+      "description": "23213",
+      "price": 2123123,
+      "rating": 2123123,
+      "reviewCount": 21231223
+    },
+    {
+      "id": "ff0a",
+      "title": "3123",
+      "description": "1231231",
+      "price": 2,
+      "rating": 23123123,
+      "reviewCount": 123123
+    }
+  ]
 }
