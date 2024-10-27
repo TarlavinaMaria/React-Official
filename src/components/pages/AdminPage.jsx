@@ -6,6 +6,8 @@ const AdminPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalAction, setModalAction] = useState('add');
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
     // Запрос к серверу для получения данных о товарах
@@ -50,6 +52,47 @@ const AdminPage = () => {
       });
   };
 
+  const handleEditProduct = (updatedProduct) => {
+    // Отправка PUT-запроса на сервер для обновления товара
+    fetch(`http://localhost:3001/orders/${updatedProduct.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedProduct),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        // Обновление списка товаров после успешного обновления
+        setProducts(products.map((product) => (product.id === data.id ? data : product)));
+      })
+      .catch((error) => {
+        console.error("Error updating product:", error);
+      });
+  };
+
+  const handleDeleteProduct = (productId) => {
+    // Отправка DELETE-запроса на сервер для удаления товара
+    fetch(`http://localhost:3001/orders/${productId}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        // Обновление списка товаров после успешного удаления
+        setProducts(products.filter((product) => product.id !== productId));
+      })
+      .catch((error) => {
+        console.error("Error deleting product:", error);
+      });
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -61,7 +104,19 @@ const AdminPage = () => {
   return (
     <div className="min-h-screen bg-gray-100 p-4">
       <div className="bg-white shadow-md rounded-md w-full">
-        <h2 className="text-xl font-bold mt-6 mb-4 p-4">Products</h2>
+        <div className="flex justify-between items-center mt-6 mb-4 p-4">
+          <h2 className="text-xl font-bold">Products</h2>
+          <button
+            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+            onClick={() => {
+              setSelectedProduct(null);
+              setModalAction('add');
+              setIsModalOpen(true);
+            }}
+          >
+            Add Product
+          </button>
+        </div>
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
@@ -98,10 +153,24 @@ const AdminPage = () => {
                 <td className="px-6 py-4 whitespace-nowrap">{product.rating}</td>
                 <td className="px-6 py-4 whitespace-nowrap">{product.reviewCount}</td>
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                  <button
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                    onClick={() => {
+                      setSelectedProduct(product);
+                      setModalAction('edit');
+                      setIsModalOpen(true);
+                    }}
+                  >
                     Edit
                   </button>
-                  <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2">
+                  <button
+                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2"
+                    onClick={() => {
+                      setSelectedProduct(product);
+                      setModalAction('delete');
+                      setIsModalOpen(true);
+                    }}
+                  >
                     Delete
                   </button>
                 </td>
@@ -109,19 +178,15 @@ const AdminPage = () => {
             ))}
           </tbody>
         </table>
-        <div className="mt-4 flex justify-center">
-          <button
-            className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-            onClick={() => setIsModalOpen(true)}
-          >
-            Add Product
-          </button>
-        </div>
       </div>
       <ProductModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
+        action={modalAction}
+        product={selectedProduct}
         onAddProduct={handleAddProduct}
+        onEditProduct={handleEditProduct}
+        onDeleteProduct={handleDeleteProduct}
       />
     </div>
   );
