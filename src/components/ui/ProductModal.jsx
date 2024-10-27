@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from 'react';
 
+/**
+ * Компонент ProductModal для отображения модального окна с формой добавления/редактирования продукта
+ * @returns JSX.Element
+ */
+
 const ProductModal = ({ isOpen, onClose, action, product, onAddProduct, onEditProduct, onDeleteProduct }) => {
+  // Обьявление состояний для формы
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
@@ -8,6 +14,9 @@ const ProductModal = ({ isOpen, onClose, action, product, onAddProduct, onEditPr
   const [reviewCount, setReviewCount] = useState('');
 
   useEffect(() => {
+    // Обновление состояний формы при изменении действия или продукта,
+    // при добавлении продукта сбрасываем значения формы,
+    // при редактировании продукта заполняем поля данными продукта
     if (action === 'edit' && product) {
       setTitle(product.title);
       setDescription(product.description);
@@ -15,11 +24,13 @@ const ProductModal = ({ isOpen, onClose, action, product, onAddProduct, onEditPr
       setRating(product.rating);
       setReviewCount(product.reviewCount);
     } else {
+      // В случае удаления продукта сбрасываем значения формы
       resetForm();
     }
   }, [action, product]);
 
   const handleSubmit = (e) => {
+    // Обработка отправки формы при добавлении или редактировании продукта
     e.preventDefault();
     if (action === 'add') {
       const newProduct = {
@@ -41,15 +52,18 @@ const ProductModal = ({ isOpen, onClose, action, product, onAddProduct, onEditPr
       };
       onEditProduct(updatedProduct);
     }
+    // Закрытие модального окна и сброс значений формы
     onClose();
   };
 
   const handleDelete = () => {
+    // Обработка удаления продукта
     onDeleteProduct(product.id);
     onClose();
   };
 
   const resetForm = () => {
+    // Сброс значений формы
     setTitle('');
     setDescription('');
     setPrice('');
@@ -57,7 +71,7 @@ const ProductModal = ({ isOpen, onClose, action, product, onAddProduct, onEditPr
     setReviewCount('');
   };
 
-  if (!isOpen) return null;
+  if (!isOpen) return null; // Возвращаем null, если модальное окно не открыто
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">

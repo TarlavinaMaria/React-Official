@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import ProductModal from "../ui/ProductModal";
 
+/**
+ * Компонент AdminPage для отображения страницы администратора
+ * @returns JSX.Element
+ */
+
 const AdminPage = () => {
-  const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalAction, setModalAction] = useState('add');
-  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [products, setProducts] = useState([]); // Массив, который будет содержать данные о продуктах
+  const [loading, setLoading] = useState(true); // Флаг, указывающий, загружаются ли данные
+  const [error, setError] = useState(null); // Состояние для хранения ошибок, если они возникнут
+  const [isModalOpen, setIsModalOpen] = useState(false); // Флаг, указывающий, открыто ли модальное окно
+  const [modalAction, setModalAction] = useState('add'); // Строка, указывающая, какое действие будет выполняться в модальном окне (add, edit, delete)
+  const [selectedProduct, setSelectedProduct] = useState(null); // Объект, содержащий данные о выбранном продукте для редактирования или удаления
 
   useEffect(() => {
     // Запрос к серверу для получения данных о товарах
@@ -92,7 +97,7 @@ const AdminPage = () => {
         console.error("Error deleting product:", error);
       });
   };
-
+  // 
   if (loading) {
     return <div>Loading...</div>;
   }

@@ -1,5 +1,10 @@
 import React, { useState } from "react";
 
+/**
+ * Компонент для регистрации пользователя
+ * @returns JSX.Element
+ */
+
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
