@@ -2,15 +2,18 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = ({ onLogin }) => {
+  // Обьявление для хранения состояния формы и ошибок
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Для навигации по приложению, после успешной авторизации
 
   const handleLogin = (e) => {
+    // Предотвращение стандартного поведения формы
     e.preventDefault();
 
     fetch("http://localhost:3001/users?email=" + email + "&password=" + password)
+    // Отправка запроса на сервер для проверки данных пользователя
       .then((response) => {
         if (!response.ok) {
           throw new Error("Network response was not ok");
@@ -19,13 +22,18 @@ const Login = ({ onLogin }) => {
       })
       .then((data) => {
         if (data.length > 0) {
-          const user = data[0];
+          // Если пользователь найден, передаем данные в функцию onLogin
+          // и переходим на главную страницу
+          const user = data[0]; // Получаем первого пользователя из массива
+          // Если пользователь админ, передаем true в функцию onLogin
+          // Если пользователь не является администратором, функция onLogin будет вызвана с двумя аргументами: user.username и false.
           onLogin(user.username, user.role === "admin");
           navigate("/");
         } else {
           setError("Invalid email or password");
         }
       })
+      // Обработка ошибок
       .catch((error) => {
         setError(error.message);
       });

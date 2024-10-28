@@ -6,11 +6,11 @@ import React, { useState } from "react";
  */
 
 const Register = () => {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState(""); 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
-  const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState(false); // добавляем состояние для успешной регистрации
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -28,10 +28,12 @@ const Register = () => {
         }
         return response.json();
       })
+      // Если регистрация успешна, обновляем состояние success и очищаем сосояние error
       .then((data) => {
         setSuccess(true);
         setError(null);
       })
+      // Если возникает ошибка, устанавливает состояние ошибки и сбрасывает флаг success
       .catch((error) => {
         setError(error.message);
         setSuccess(false);
