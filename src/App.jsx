@@ -12,17 +12,19 @@ import Cart from "./components/pages/Cart";
 import AdminPage from "./components/pages/AdminPage";
 
 const App = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [username, setUsername] = useState("");
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Указывает, что авторизован ли пользователь
+  const [username, setUsername] = useState(""); // Имя пользователя
+  const [isAdmin, setIsAdmin] = useState(false); // Указывает, что пользователь является администратором, если true то он может видеть страницу администратора
 
   const handleLogin = (username, isAdmin) => {
+    // Функция для входа в систему
     setUsername(username);
     setIsLoggedIn(true);
     setIsAdmin(isAdmin);
   };
 
   const handleLogout = () => {
+    // Функция для выхода из системы
     setUsername("");
     setIsLoggedIn(false);
     setIsAdmin(false);
